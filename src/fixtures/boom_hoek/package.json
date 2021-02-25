@@ -11,6 +11,6 @@
   },
   "resolutions": {
     "hoek": "4.2.1",
-    "webpack": "5.23.0"
+    "example": "1.0.0"
   }
 }
