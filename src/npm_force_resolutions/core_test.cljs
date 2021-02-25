@@ -7,8 +7,7 @@
             [npm-force-resolutions.core :refer [main node-slurp read-json find-resolutions
                                                 patch-all-dependencies update-on-requires
                                                 add-dependencies update-package-lock
-                                                fix-existing-dependency fetch-resolved-resolution
-                                                get-registry-url]]))
+                                                fix-existing-dependency fetch-resolved-resolution]]))
 
 (set! js/XMLHttpRequest XMLHttpRequest)
 
@@ -20,14 +19,10 @@
   (let [package-lock (read-json "./src/fixtures/boom_hoek/package-lock.json")]
     (is (= (get package-lock "name") "package-lock-fixture-before"))))
 
-(deftest test-get-registry-url
-  (let [registry-url (get-registry-url)]
-    (is (= registry-url "https://registry.npmjs.org/"))))
-
 (deftest test-fetch-resolved-resolution
   (async done
     (go
-      (let [resolution (<! (fetch-resolved-resolution "https://registry.npmjs.org/" "hoek" "4.2.1"))]
+      (let [resolution (<! (fetch-resolved-resolution "hoek" "4.2.1"))]
         (is (= resolution
               {"hoek"
                 {"integrity" "sha512-QLg82fGkfnJ/4iy1xZ81/9SIJiq1NGFUMGs6ParyjBZr6jW2Ufj/snDqTHixNlHdPNwN2RLVD0Pi3igeK9+JfA=="
